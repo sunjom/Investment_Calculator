@@ -4,22 +4,23 @@ import {useState} from "react";
 import Logo from "./components/Logo.jsx";
 
 function App() {
-    const [investment, setInvestment] = useState({
-            initial:15000,
-            annual:900,
-            returnVal:5.5,
-            duration:12,
-        }
-    );
-    const inputIsValid = investment.duration >= 1;
-    function onValChange(symbol,val){
-        setInvestment((prevUserInput) => {
-            return{
-                ...prevUserInput,
-                [symbol] : +val // 앞에 +를 붙여줌으로써 숫자 값을 받을 수 있음
-            }
-        });
-    }
+  const [investment, setInvestment] = useState({
+    initial:15000,
+    annual:900,
+    returnVal:5.5,
+    duration:12,
+  });
+  const inputIsValid = investment.duration >= 1;
+
+  function onValChange(symbol,val){
+    setInvestment((prevUserInput) => {
+      return{
+        ...prevUserInput,
+        [symbol] : +val // 앞에 +를 붙여줌으로써 숫자 값을 받을 수 있음
+      }
+    });
+  }
+
   return (
     <div>
       <Header/>

@@ -8,7 +8,7 @@ export default function Logo({input}){
     }
     const resultData = calculateInvestmentResults(userInput)
     const initialInvestment = resultData[0].valueEndOfYear - resultData[0].interest - resultData[0].annualInvestment;
-    console.log(resultData);
+    
     return(
         <table id="result">
             <thead>
@@ -22,10 +22,11 @@ export default function Logo({input}){
             </thead>
             <tbody>
                 {resultData.map((yearData) =>{
+                    //연말까지 누적된 총 이익.
                     const totalInterset = yearData.valueEndOfYear - yearData.annualInvestment * yearData.year -initialInvestment;
-                    //totalInterest => 올해 끝까지 얻은 이익에서 해마다 얻은 이익을 빼면 올해의 이득을 볼 수 있음.
+                    //투자된 총 자본
                     const totalAmountInvested = yearData.valueEndOfYear - totalInterset
-                    //
+                    
                     return( <tr key={yearData.year}>
                         <td>{yearData.year}</td>
                         <td>{formatter.format(yearData.valueEndOfYear)}</td>
